@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>as</string>
+	</array>
+	<key>name</key>
+	<string>LC2K assembly</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>#opcode</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#constants</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#label</string>
+		</dict>
+		
+		<dict>
+			<key>include</key>
+			<string>#comments</string>
+		</dict>
+
+	</array>
+
+	<key>repository</key>
+	<dict>
+
+		<key>comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>#.*</string>
+					<key>name</key>
+					<string>comment.line</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?<=noop).*</string>
+					<key>name</key>
+					<string>comment.block</string>
+				</dict>
+			</array>
+		</dict>
+
+		<key>constants</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\b(?<=fill\s)([0-9]*)\b</string>
+					<key>name</key>
+					<string>constant.numeric</string>
+				</dict>
+				
+			</array>
+		</dict>
+
+
+		<key>opcode</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				
+				<dict>
+					<key>match</key><!-- (?m) (?<=;) (?<=^\t|^\w*\t) (add|nor|lw|sw|beq|jalr|halt|noop|.fill)-->
+					<string>(add|nor|lw|sw|beq|jalr|halt|noop|.fill)</string>
+					<key>name</key>
+					<string>entity.name.function</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		<key>label</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\s[0-7])+\b</string>
+					<key>name</key>
+					<string>storage.type</string>
+				</dict>
+			</array>
+		</dict>
+
+
+	</dict>
+	<key>scopeName</key>
+	<string>source.lc2k</string>
+	<key>uuid</key>
+	<string>0dc1b983-2d6d-4730-9d1c-67c3a0186da9</string>
+</dict>
+</plist>
