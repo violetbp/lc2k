@@ -3,6 +3,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { Lc2kDefinitionProvider } from './lc2kDeclaration';
+import { Lc2kHoverProvider } from './lc2kDeclaration';
 
 
 const LC2K_MODE: vscode.DocumentFilter = { language: 'lc2k', scheme: 'file' };
@@ -34,9 +35,10 @@ export function activate(context: vscode.ExtensionContext) {
         // Display a message box to the user
         vscode.window.showInformationMessage('Hello World!');
     });
+    let disposable2 = vscode.languages.registerHoverProvider(LC2K_MODE, new Lc2kHoverProvider());
 
     context.subscriptions.push(disposable1);
-    
+    context.subscriptions.push(disposable2);
     context.subscriptions.push(
         vscode.languages.registerDefinitionProvider(
             LC2K_MODE, new Lc2kDefinitionProvider()));
