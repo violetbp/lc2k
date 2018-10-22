@@ -14,6 +14,9 @@ export interface Lc2kDefinitionInformation {
   toolUsed: string;
 }
 
+
+
+
 export class Lc2kHoverProvider implements vscode.HoverProvider {
   public provideHover(document: vscode.TextDocument, position: vscode.Position,
                       token: vscode.CancellationToken): vscode.ProviderResult<vscode.Hover> {
@@ -30,7 +33,7 @@ export class Lc2kHoverProvider implements vscode.HoverProvider {
         return new vscode.Hover("opcode 010");
       }
       case "sw": {
-        return new vscode.Hover("opcode 011");
+        return new vscode.Hover("opcode 011\n\ntest\ntest");
       }
       case "beq": {
         return new vscode.Hover("opcode 100");
