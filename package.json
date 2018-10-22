@@ -1,73 +1,73 @@
 {
-    "name": "lc2k",
-    "displayName": "Lc2k assembly support",
-    "description": "Support for various features with eecs 370 lc2k language",
-    "version": "0.0.1",
-    "publisher": "Violet",
-    "icon": "images/lc2kIcon.png",
-    "engines": {
-        "vscode": "^1.28.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mookie1097/lc2k.git"
-    },
-    "keywords": [
-        "lc2k",
-        "eecs 370"
-    ],
-    "categories": [
-        "Other",
-        "Programming Languages"
-    ],
-    "activationEvents": [
-        "onLanguage:lc2k",
-        "onCommand:extension.sayHello"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "languages": [
-            {
-                "id": "lc2k",
-                "aliases": [
-                    "LC2K Assembly",
-                    "lc2k"
-                ],
-                "extensions": [
-                    ".as"
-                ],
-                "configuration": "./language-configuration.json"
-            }
+  "name": "lc2k",
+  "displayName": "Lc2k assembly support",
+  "description": "Support for various features with eecs 370 lc2k language",
+  "version": "1.0.0",
+  "publisher": "Violet",
+  "icon": "images/lc2kIcon.png",
+  "engines": {
+    "vscode": "^1.28.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mookie1097/lc2k.git"
+  },
+  "keywords": [
+    "lc2k",
+    "eecs 370"
+  ],
+  "categories": [
+    "Other",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:lc2k",
+    "onCommand:extension.sayHello"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "languages": [
+      {
+        "id": "lc2k",
+        "aliases": [
+          "LC2K Assembly",
+          "lc2k"
         ],
-        "grammars": [
-            {
-                "language": "lc2k",
-                "scopeName": "source.lc2k",
-                "path": "./syntaxes/lc2k.tmLanguage"
-            }
+        "extensions": [
+          ".as"
         ],
-        "commands": [
-            {
-                "command": "extension.sayHello",
-                "title": "Hello World"
-            }
-        ],
-        "capabilities": {
-            "definitionProvider": "true"
-        }
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.21",
-        "tslint": "^5.8.0",
-        "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42"
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "lc2k",
+        "scopeName": "source.lc2k",
+        "path": "./syntaxes/lc2k.tmLanguage"
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.sayHello",
+        "title": "Hello World"
+      }
+    ],
+    "capabilities": {
+      "definitionProvider": "true"
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.21",
+    "tslint": "^5.8.0",
+    "@types/node": "^8.10.25",
+    "@types/mocha": "^2.2.42"
+  }
 }
