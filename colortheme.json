@@ -1,0 +1,20 @@
+{
+	"tokenColors": [
+		{
+			"name": "Opcode",
+			"scope": "opcode.lc2k",
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#66D9EF"
+			}
+		},
+		{
+			"name": "Class name",
+			"scope": "entity.name.class",
+			"settings": {
+				"fontStyle": "underline",
+				"foreground": "#A6E22E"
+			}
+		},
+	]
+}

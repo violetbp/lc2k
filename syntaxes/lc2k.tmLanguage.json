@@ -25,16 +25,13 @@
     ],
     "repository": {
         "aluOp": {
-            "name": "statement.lc2k.add",
-            "match": "([^\\s]{0,7})\\s+(add|nor)\\s+([0-7])\\s+([0-7])\\s+([0-7])\\s+(.*)?",
+            "name": "statement.lc2k.alu",
+            "match": "([^\\s]{0,7})\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s])\\s+([^\\s]+)\\s+(.*)?",
             "captures": {
                 "1": {
                     "patterns": [
                         {
                             "include": "#label"
-                        },
-                        {
-                            "include": "#globallabel"
                         }
                     ]
                 },
@@ -77,7 +74,7 @@
         },
         "lwSwBeqOp": {
             "name": "statement.lc2k.memory",
-            "match": "([^\\s]{0,7})\\s+(lw|sw|beq)\\s+([0-7])\\s+([0-7])\\s+([^\\s]{0,6})\\s+(.*)?",
+            "match": "([^\\s]{0,7})\\s+(lw|sw|beq)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)\\s+(.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -118,7 +115,11 @@
                     ]
                 },
                 "6": {
-                    "patterns": []
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        }
+                    ]
                 }
             }
         },
@@ -130,9 +131,6 @@
                     "patterns": [
                         {
                             "include": "#label"
-                        },
-                        {
-                            "include": "#globallabel"
                         }
                     ]
                 },
@@ -154,7 +152,7 @@
         },
         "jalrOp": {
             "name": "statement.lc2k.jalr",
-            "match": "([^\\s]{0,7})\\s+(jalr)\\s+([0-7])\\s+([0-7])\\s+(.*)?",
+            "match": "([^\\s]{0,7})\\s+(jalr)\\s+([^\\s]+)\\s+([^\\s]+)\\s+(.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -228,6 +226,7 @@
             }
         },
         "offset": {
+            "name": "offset.lc2k",
             "patterns": [
                 {
                     "include": "#label"
@@ -238,6 +237,7 @@
             ]
         },
         "label": {
+            "name": "label.lc2k",
             "patterns": [
                 {
                     "include": "#localLabel"
@@ -248,27 +248,27 @@
             ]
         },
         "localLabel": {
-            "name": "storage.modifier",
-            "match": "[a-z][0-9a-zA-Z]{0,5}"
+            "name": "entity.name.function",
+            "match": "[a-z][0-9a-zA-Z]{0,6}"
         },
         "globalLabel": {
-            "name": "keyword.control",
-            "match": "[A-Z][0-9a-zA-Z]{0,5}"
+            "name": "entity.name.section",
+            "match": "[A-Z][0-9a-zA-Z]{0,6}"
         },
         "opcode": {
-            "name": "entity.name.function",
-            "match": ".*"
+            "name": "keyword.other.lc2k",
+            "match": "add|nor|nand|lw|sw|beq|jalr|noop|halt|.fill"
         },
         "reg": {
-            "name": "storage.type",
+            "name": "storage.type.lc2k",
             "match": "[0-7]"
         },
         "comment": {
-            "name": "comment.line",
+            "name": "comment.line.lc2k",
             "match": ".*"
         },
         "constant": {
-            "name": "constant.numeric",
+            "name": "constant.numeric.lc2k",
             "match": "[+-]?[0-9]+"
         }
     },
