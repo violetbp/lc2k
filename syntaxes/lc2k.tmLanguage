@@ -28,6 +28,11 @@
 			<string>#comments</string>
 		</dict>
 
+		<dict>
+			<key>include</key>
+			<string>#fill</string>
+		</dict>
+
 	</array>
 
 	<key>repository</key>
@@ -96,7 +101,25 @@
 			</array>
 		</dict>
 
-
+	<key>fill</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>opcode.fill</string>
+					<key>match</key>
+					<string>[a-zA-Z]*\s+.fill\s+([^\s]+)</string>
+					<key>0</key>
+						<key>patterns</key>
+							<key>name</key>
+							<string>opcode.fill.label</string>
+							<key>match</key>
+							<string>[^\s]{0,7}</string>
+				</dict>
+			</array>
+		</dict>
+	
 	</dict>
 	<key>scopeName</key>
 	<string>source.lc2k</string>

@@ -3,7 +3,7 @@
   "displayName": "Lc2k assembly support",
   "description": "Support for various features with eecs 370 lc2k language",
   "version": "1.0.0",
-  "publisher": "Violet",
+  "publisher": "violetbp",
   "icon": "images/lc2kIcon.png",
   "engines": {
     "vscode": "^1.28.0"
@@ -43,7 +43,7 @@
       {
         "language": "lc2k",
         "scopeName": "source.lc2k",
-        "path": "./syntaxes/lc2k.tmLanguage"
+        "path": "./syntaxes/lc2k.tmLanguage.json"
       }
     ],
     "commands": [

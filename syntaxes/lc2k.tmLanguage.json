@@ -1,0 +1,277 @@
+{
+    "fileTypes": [
+        "lc2k"
+    ],
+    "name": "LC2K assembly",
+    "patterns": [
+        {
+            "include": "#aluOp"
+        },
+        {
+            "include": "#noopOp"
+        },
+        {
+            "include": "#lwSwBeqOp"
+        },
+        {
+            "include": "#beqOp"
+        },
+        {
+            "include": "#jalrOp"
+        },
+        {
+            "include": "#.fillOp"
+        }
+    ],
+    "repository": {
+        "aluOp": {
+            "name": "statement.lc2k.add",
+            "match": "([^\\s]{0,7})\\s+(add|nor)\\s+([0-7])\\s+([0-7])\\s+([0-7])\\s+(.*)?",
+            "captures": {
+                "1": {
+                    "patterns": [
+                        {
+                            "include": "#label"
+                        },
+                        {
+                            "include": "#globallabel"
+                        }
+                    ]
+                },
+                "2": {
+                    "patterns": [
+                        {
+                            "include": "#opcode"
+                        }
+                    ]
+                },
+                "3": {
+                    "patterns": [
+                        {
+                            "include": "#reg"
+                        }
+                    ]
+                },
+                "4": {
+                    "patterns": [
+                        {
+                            "include": "#reg"
+                        }
+                    ]
+                },
+                "5": {
+                    "patterns": [
+                        {
+                            "include": "#reg"
+                        }
+                    ]
+                },
+                "6": {
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        }
+                    ]
+                }
+            }
+        },
+        "lwSwBeqOp": {
+            "name": "statement.lc2k.memory",
+            "match": "([^\\s]{0,7})\\s+(lw|sw|beq)\\s+([0-7])\\s+([0-7])\\s+([^\\s]{0,6})\\s+(.*)?",
+            "captures": {
+                "1": {
+                    "patterns": [
+                        {
+                            "include": "#label"
+                        }
+                    ]
+                },
+                "2": {
+                    "patterns": [
+                        {
+                            "include": "#opcode"
+                        }
+                    ]
+                },
+                "3": {
+                    "patterns": [
+                        {
+                            "include": "#reg"
+                        }
+                    ]
+                },
+                "4": {
+                    "patterns": [
+                        {
+                            "include": "#reg"
+                        }
+                    ]
+                },
+                "5": {
+                    "patterns": [
+                        {
+                            "include": "#label"
+                        },
+                        {
+                            "include": "#constant"
+                        }
+                    ]
+                },
+                "6": {
+                    "patterns": []
+                }
+            }
+        },
+        "noopOp": {
+            "name": "statement.lc2k.noop",
+            "match": "([^\\s]{0,7})\\s+(noop|halt)\\s+(.*)?",
+            "captures": {
+                "1": {
+                    "patterns": [
+                        {
+                            "include": "#label"
+                        },
+                        {
+                            "include": "#globallabel"
+                        }
+                    ]
+                },
+                "2": {
+                    "patterns": [
+                        {
+                            "include": "#opcode"
+                        }
+                    ]
+                },
+                "3": {
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        }
+                    ]
+                }
+            }
+        },
+        "jalrOp": {
+            "name": "statement.lc2k.jalr",
+            "match": "([^\\s]{0,7})\\s+(jalr)\\s+([0-7])\\s+([0-7])\\s+(.*)?",
+            "captures": {
+                "1": {
+                    "patterns": [
+                        {
+                            "include": "#label"
+                        }
+                    ]
+                },
+                "2": {
+                    "patterns": [
+                        {
+                            "include": "#opcode"
+                        }
+                    ]
+                },
+                "3": {
+                    "patterns": [
+                        {
+                            "include": "#reg"
+                        }
+                    ]
+                },
+                "4": {
+                    "patterns": [
+                        {
+                            "include": "#reg"
+                        }
+                    ]
+                },
+                "5": {
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        }
+                    ]
+                }
+            }
+        },
+        ".fillOp": {
+            "name": "statement.lc2k.fill",
+            "match": "([^\\s]{0,7})\\s+(\\.fill)\\s+([^\\s]+)\\s+(.*)?",
+            "captures": {
+                "1": {
+                    "patterns": [
+                        {
+                            "include": "#label"
+                        }
+                    ]
+                },
+                "2": {
+                    "patterns": [
+                        {
+                            "include": "#opcode"
+                        }
+                    ]
+                },
+                "3": {
+                    "patterns": [
+                        {
+                            "include": "#offset"
+                        }
+                    ]
+                },
+                "4": {
+                    "patterns": [
+                        {
+                            "include": "#comment"
+                        }
+                    ]
+                }
+            }
+        },
+        "offset": {
+            "patterns": [
+                {
+                    "include": "#label"
+                },
+                {
+                    "include": "#constant"
+                }
+            ]
+        },
+        "label": {
+            "patterns": [
+                {
+                    "include": "#localLabel"
+                },
+                {
+                    "include": "#globalLabel"
+                }
+            ]
+        },
+        "localLabel": {
+            "name": "storage.modifier",
+            "match": "[a-z][0-9a-zA-Z]{0,5}"
+        },
+        "globalLabel": {
+            "name": "keyword.control",
+            "match": "[A-Z][0-9a-zA-Z]{0,5}"
+        },
+        "opcode": {
+            "name": "entity.name.function",
+            "match": ".*"
+        },
+        "reg": {
+            "name": "storage.type",
+            "match": "[0-7]"
+        },
+        "comment": {
+            "name": "comment.line",
+            "match": ".*"
+        },
+        "constant": {
+            "name": "constant.numeric",
+            "match": "[+-]?[0-9]+"
+        }
+    },
+    "scopeName": "source.lc2k",
+    "uuid": "0dc1b983-2d6d-4730-9d1c-67c3a0186da9"
+}
