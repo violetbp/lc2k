@@ -26,7 +26,7 @@
     "repository": {
         "aluOp": {
             "name": "statement.lc2k.alu",
-            "match": "^([^\\s]*)\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)\\s+(.*)?",
+            "match": "^([^\\s]*)\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -74,7 +74,7 @@
         },
         "lwSwBeqOp": {
             "name": "statement.lc2k.memory",
-            "match": "^([^\\s]*)\\s+(lw|sw|beq)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)\\s+(.*)?",
+            "match": "^([^\\s]*)\\s+(lw|sw|beq)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -125,7 +125,7 @@
         },
         "noopOp": {
             "name": "statement.lc2k.noop",
-            "match": "^([^\\s]*)\\s+(noop|halt)\\s+(.*)?",
+            "match": "^([^\\s]*)\\s+(noop|halt)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -152,7 +152,7 @@
         },
         "jalrOp": {
             "name": "statement.lc2k.jalr",
-            "match": "^([^\\s]*)\\s+(jalr)\\s+([^\\s]+)\\s+([^\\s]+)\\s+(.*)?",
+            "match": "^([^\\s]*)\\s+(jalr)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -193,7 +193,7 @@
         },
         ".fillOp": {
             "name": "statement.lc2k.fill",
-            "match": "^([^\\s]*)\\s+(\\.fill)\\s+([^\\s]+)\\s+(.*)?",
+            "match": "^([^\\s]*)\\s+(\\.fill)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -264,7 +264,7 @@
         },
         "opcode": {
             "name": "variable.other.opcode.lc2k",
-            "match": "[add|nor|nand|lw|sw|beq|jalr|noop|halt|.fill]"
+            "match": "(add|nor|nand|lw|sw|beq|jalr|noop|halt|\\.fill)"
         },
         "reg": {
             "name": "storage.type.lc2k",
