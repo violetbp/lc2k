@@ -258,17 +258,24 @@
             "name": "keyword.control.global.label.lc2k",
             "match": "\\b[A-Z][^\\s]{0,6}\\b"
         },
-        "wrongLabel": {
-            "name": "invalid.illegal.long-label.lc2k",
-            "match": "[^\\s]{8,}"
-        },
         "opcode": {
             "name": "variable.other.opcode.lc2k",
             "match": "(add|nor|nand|lw|sw|beq|jalr|noop|halt|\\.fill)"
         },
         "reg": {
+            "name": "meta.reg.lc2k",
+            "patterns": [
+                {
+                    "include": "#regNum"
+                },
+                {
+                    "include": "#wrongReg"
+                }
+            ]
+        },
+        "regNum": {
             "name": "storage.type.lc2k",
-            "match": "[0-7]"
+            "match": "\\b[0-7]\\b"
         },
         "comment": {
             "name": "comment.line.lc2k",
@@ -277,6 +284,14 @@
         "constant": {
             "name": "constant.numeric.lc2k",
             "match": "[+-]?[0-9]+"
+        },
+        "wrongLabel": {
+            "name": "invalid.illegal.long-label.lc2k",
+            "match": "[^\\s]{8,}"
+        },
+        "wrongReg": {
+            "name": "invalid.illegal.bad-register.lc2k",
+            "match": "[^\\s]*[^0-7][^\\s]*|[^\\s]{2,}"
         }
     },
     "scopeName": "source.lc2k",
