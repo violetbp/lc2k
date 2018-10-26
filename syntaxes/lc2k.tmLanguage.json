@@ -5,27 +5,24 @@
     "name": "LC2K assembly",
     "patterns": [
         {
-            "include": "#aluOp"
+            "include": "#rType"
         },
         {
-            "include": "#noopOp"
+            "include": "#oType"
         },
         {
-            "include": "#lwSwBeqOp"
+            "include": "#iType"
         },
         {
-            "include": "#beqOp"
+            "include": "#jType"
         },
         {
-            "include": "#jalrOp"
-        },
-        {
-            "include": "#.fillOp"
+            "include": "#.fill"
         }
     ],
     "repository": {
-        "aluOp": {
-            "name": "statement.lc2k.alu",
+        "rType": {
+            "name": "meta.statement.lc2k.r-type",
             "match": "^([^\\s]*)\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
@@ -72,8 +69,8 @@
                 }
             }
         },
-        "lwSwBeqOp": {
-            "name": "statement.lc2k.memory",
+        "iType": {
+            "name": "meta.statement.lc2k.i-type",
             "match": "^([^\\s]*)\\s+(lw|sw|beq)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
@@ -123,8 +120,8 @@
                 }
             }
         },
-        "noopOp": {
-            "name": "statement.lc2k.noop",
+        "oType": {
+            "name": "meta.statement.lc2k.o-type",
             "match": "^([^\\s]*)\\s+(noop|halt)(\\s+.*)?",
             "captures": {
                 "1": {
@@ -150,8 +147,8 @@
                 }
             }
         },
-        "jalrOp": {
-            "name": "statement.lc2k.jalr",
+        "jType": {
+            "name": "meta.statement.lc2k.j-type",
             "match": "^([^\\s]*)\\s+(jalr)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
@@ -191,8 +188,8 @@
                 }
             }
         },
-        ".fillOp": {
-            "name": "statement.lc2k.fill",
+        ".fill": {
+            "name": "meta.statement.lc2k.fill",
             "match": "^([^\\s]*)\\s+(\\.fill)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
@@ -226,7 +223,7 @@
             }
         },
         "offset": {
-            "name": "offset.lc2k",
+            "name": "meta.offset.lc2k",
             "patterns": [
                 {
                     "include": "#label"
@@ -237,7 +234,7 @@
             ]
         },
         "label": {
-            "name": "label.lc2k",
+            "name": "meta.label.lc2k",
             "patterns": [
                 {
                     "include": "#localLabel"
