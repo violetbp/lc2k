@@ -5,28 +5,25 @@
     "name": "LC2K assembly",
     "patterns": [
         {
-            "include": "#aluOp"
+            "include": "#rType"
         },
         {
-            "include": "#noopOp"
+            "include": "#oType"
         },
         {
-            "include": "#lwSwBeqOp"
+            "include": "#iType"
         },
         {
-            "include": "#beqOp"
+            "include": "#jType"
         },
         {
-            "include": "#jalrOp"
-        },
-        {
-            "include": "#.fillOp"
+            "include": "#.fill"
         }
     ],
     "repository": {
-        "aluOp": {
-            "name": "statement.lc2k.alu",
-            "match": "([^\\s]{0,7})\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s])\\s+([^\\s]+)\\s+(.*)?",
+        "rType": {
+            "name": "meta.statement.lc2k.r-type",
+            "match": "^([^\\s]*)\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -72,9 +69,9 @@
                 }
             }
         },
-        "lwSwBeqOp": {
-            "name": "statement.lc2k.memory",
-            "match": "([^\\s]{0,7})\\s+(lw|sw|beq)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)\\s+(.*)?",
+        "iType": {
+            "name": "meta.statement.lc2k.i-type",
+            "match": "^([^\\s]*)\\s+(lw|sw|beq)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -123,9 +120,9 @@
                 }
             }
         },
-        "noopOp": {
-            "name": "statement.lc2k.noop",
-            "match": "([^\\s]{0,7})\\s+(noop|halt)\\s+(.*)?",
+        "oType": {
+            "name": "meta.statement.lc2k.o-type",
+            "match": "^([^\\s]*)\\s+(noop|halt)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -150,9 +147,9 @@
                 }
             }
         },
-        "jalrOp": {
-            "name": "statement.lc2k.jalr",
-            "match": "([^\\s]{0,7})\\s+(jalr)\\s+([^\\s]+)\\s+([^\\s]+)\\s+(.*)?",
+        "jType": {
+            "name": "meta.statement.lc2k.j-type",
+            "match": "^([^\\s]*)\\s+(jalr)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -191,9 +188,9 @@
                 }
             }
         },
-        ".fillOp": {
-            "name": "statement.lc2k.fill",
-            "match": "([^\\s]{0,7})\\s+(\\.fill)\\s+([^\\s]+)\\s+(.*)?",
+        ".fill": {
+            "name": "meta.statement.lc2k.fill",
+            "match": "^([^\\s]*)\\s+(\\.fill)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
                     "patterns": [
@@ -226,7 +223,7 @@
             }
         },
         "offset": {
-            "name": "offset.lc2k",
+            "name": "meta.offset.lc2k",
             "patterns": [
                 {
                     "include": "#label"
@@ -237,31 +234,45 @@
             ]
         },
         "label": {
-            "name": "label.lc2k",
+            "name": "meta.label.lc2k",
             "patterns": [
                 {
                     "include": "#localLabel"
                 },
                 {
                     "include": "#globalLabel"
+                },
+                {
+                    "include": "#wrongLabel"
                 }
             ]
         },
         "localLabel": {
             "name": "entity.name.function.local.label.lc2k",
-            "match": "\\b([a-z][0-9a-zA-Z]{0,5})\\b"
+            "match": "\\b[^A-Z][^\\s]{0,6}\\b"
         },
         "globalLabel": {
             "name": "keyword.control.global.label.lc2k",
-            "match": "\\b([A-Z][0-9a-zA-Z]{0,5})\\b"
+            "match": "\\b[A-Z][^\\s]{0,6}\\b"
         },
         "opcode": {
             "name": "variable.other.opcode.lc2k",
-            "match": "[add|nor|nand|lw|sw|beq|jalr|noop|halt|.fill]"
+            "match": "(add|nor|nand|lw|sw|beq|jalr|noop|halt|\\.fill)"
         },
         "reg": {
+            "name": "meta.reg.lc2k",
+            "patterns": [
+                {
+                    "include": "#regNum"
+                },
+                {
+                    "include": "#wrongReg"
+                }
+            ]
+        },
+        "regNum": {
             "name": "storage.type.lc2k",
-            "match": "[0-7]"
+            "match": "\\b[0-7]\\b"
         },
         "comment": {
             "name": "comment.line.lc2k",
@@ -270,6 +281,14 @@
         "constant": {
             "name": "constant.numeric.lc2k",
             "match": "[+-]?[0-9]+"
+        },
+        "wrongLabel": {
+            "name": "invalid.illegal.long-label.lc2k",
+            "match": "[^\\s]{8,}"
+        },
+        "wrongReg": {
+            "name": "invalid.illegal.bad-register.lc2k",
+            "match": "[^\\s]*[^0-7][^\\s]*|[^\\s]{2,}"
         }
     },
     "scopeName": "source.lc2k",
