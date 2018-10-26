@@ -26,7 +26,7 @@
     "repository": {
         "aluOp": {
             "name": "statement.lc2k.alu",
-            "match": "^([^\\s]*)\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s])\\s+([^\\s]+)\\s+(.*)?",
+            "match": "^([^\\s]*)\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)\\s+(.*)?",
             "captures": {
                 "1": {
                     "patterns": [
