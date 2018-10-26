@@ -244,16 +244,23 @@
                 },
                 {
                     "include": "#globalLabel"
+                },
+                {
+                    "include": "#wrongLabel"
                 }
             ]
         },
         "localLabel": {
             "name": "entity.name.function.local.label.lc2k",
-            "match": "\\b([a-z][0-9a-zA-Z]{0,5})\\b"
+            "match": "\\b[^A-Z][^\\s]{0,6}\\b"
         },
         "globalLabel": {
             "name": "keyword.control.global.label.lc2k",
-            "match": "\\b([A-Z][0-9a-zA-Z]{0,5})\\b"
+            "match": "\\b[A-Z][^\\s]{0,6}\\b"
+        },
+        "wrongLabel": {
+            "name": "invalid.illegal.long-label.lc2k",
+            "match": "[^\\s]{8,}"
         },
         "opcode": {
             "name": "variable.other.opcode.lc2k",
