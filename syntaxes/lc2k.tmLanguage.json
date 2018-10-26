@@ -248,16 +248,16 @@
             ]
         },
         "localLabel": {
-            "name": "entity.name.function",
-            "match": "[a-z][0-9a-zA-Z]{0,6}"
+            "name": "entity.name.function.local.label.lc2k",
+            "match": "\\b([a-z][0-9a-zA-Z]{0,5})\\b"
         },
         "globalLabel": {
-            "name": "entity.name.section",
-            "match": "[A-Z][0-9a-zA-Z]{0,6}"
+            "name": "keyword.control.global.label.lc2k",
+            "match": "\\b([A-Z][0-9a-zA-Z]{0,5})\\b"
         },
         "opcode": {
-            "name": "keyword.other.lc2k",
-            "match": "add|nor|nand|lw|sw|beq|jalr|noop|halt|.fill"
+            "name": "variable.other.opcode.lc2k",
+            "match": "[add|nor|nand|lw|sw|beq|jalr|noop|halt|.fill]"
         },
         "reg": {
             "name": "storage.type.lc2k",

@@ -46,12 +46,6 @@
         "path": "./syntaxes/lc2k.tmLanguage.json"
       }
     ],
-    "commands": [
-      {
-        "command": "extension.sayHello",
-        "title": "Hello World"
-      }
-    ],
     "capabilities": {
       "definitionProvider": "true"
     }
