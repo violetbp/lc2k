@@ -2,8 +2,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { Lc2kDefinitionProvider, Lc2kHoverProvider } from './lc2kDeclaration';
-import {Lc2kFormatter} from './lc2kFormat';
+import { Lc2kDefinitionProvider } from './lc2kDeclaration';
+import { Lc2kFormatter } from './lc2kFormat';
+import { Lc2kHoverProvider } from './hoverInfo';
 
 const LC2K_MODE: vscode.DocumentFilter = {
   language: 'lc2k',
