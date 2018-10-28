@@ -26,23 +26,23 @@
   "main": "./out/extension",
   "contributes": {
     "languages": [{
-        "id": "lc2k",
-        "aliases": [
-          "LC2K Assembly",
-          "lc2k"
-        ],
-        "extensions": [
-          ".as"
-        ],
-        "configuration": "./language-configuration.json"
+      "id": "lc2k",
+      "aliases": [
+        "LC2K Assembly",
+        "lc2k"
+      ],
+      "extensions": [
+        ".as"
+      ],
+      "configuration": "./language-configuration.json"
+    }],
+    "configurationDefaults": {
+      "[lc2k]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 8,
+        "editor.autoIndent": false,
+        "editor.formatOnSave": false
       }
-
-    ],
-    "[lc2k]": {
-      "editor.insertSpaces": false,
-      "editor.tabSize": 8,
-      "editor.autoIndent": false,
-      "editor.formatOnSave": false
     },
     "grammars": [{
       "language": "lc2k",
