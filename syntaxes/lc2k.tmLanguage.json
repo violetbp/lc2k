@@ -3,8 +3,7 @@
         "lc2k"
     ],
     "name": "LC2K assembly",
-    "patterns": [
-        {
+    "patterns": [{
             "include": "#rType"
         },
         {
@@ -26,46 +25,34 @@
             "match": "^([^\\s]*)\\s+(add|nor|nand)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
-                    "patterns": [
-                        {
-                            "include": "#label"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#label"
+                    }]
                 },
                 "2": {
-                    "patterns": [
-                        {
-                            "include": "#opcode"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#opcode"
+                    }]
                 },
                 "3": {
-                    "patterns": [
-                        {
-                            "include": "#reg"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#reg"
+                    }]
                 },
                 "4": {
-                    "patterns": [
-                        {
-                            "include": "#reg"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#reg"
+                    }]
                 },
                 "5": {
-                    "patterns": [
-                        {
-                            "include": "#reg"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#reg"
+                    }]
                 },
                 "6": {
-                    "patterns": [
-                        {
-                            "include": "#comment"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#comment"
+                    }]
                 }
             }
         },
@@ -74,36 +61,27 @@
             "match": "^([^\\s]*)\\s+(lw|sw|beq)\\s+([^\\s]+)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
-                    "patterns": [
-                        {
-                            "include": "#label"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#label"
+                    }]
                 },
                 "2": {
-                    "patterns": [
-                        {
-                            "include": "#opcode"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#opcode"
+                    }]
                 },
                 "3": {
-                    "patterns": [
-                        {
-                            "include": "#reg"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#reg"
+                    }]
                 },
                 "4": {
-                    "patterns": [
-                        {
-                            "include": "#reg"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#reg"
+                    }]
                 },
                 "5": {
-                    "patterns": [
-                        {
+                    "patterns": [{
                             "include": "#label"
                         },
                         {
@@ -112,11 +90,9 @@
                     ]
                 },
                 "6": {
-                    "patterns": [
-                        {
-                            "include": "#comment"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#comment"
+                    }]
                 }
             }
         },
@@ -125,25 +101,19 @@
             "match": "^([^\\s]*)\\s+(noop|halt)(\\s+.*)?",
             "captures": {
                 "1": {
-                    "patterns": [
-                        {
-                            "include": "#label"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#label"
+                    }]
                 },
                 "2": {
-                    "patterns": [
-                        {
-                            "include": "#opcode"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#opcode"
+                    }]
                 },
                 "3": {
-                    "patterns": [
-                        {
-                            "include": "#comment"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#comment"
+                    }]
                 }
             }
         },
@@ -152,39 +122,29 @@
             "match": "^([^\\s]*)\\s+(jalr)\\s+([^\\s]+)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
-                    "patterns": [
-                        {
-                            "include": "#label"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#label"
+                    }]
                 },
                 "2": {
-                    "patterns": [
-                        {
-                            "include": "#opcode"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#opcode"
+                    }]
                 },
                 "3": {
-                    "patterns": [
-                        {
-                            "include": "#reg"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#reg"
+                    }]
                 },
                 "4": {
-                    "patterns": [
-                        {
-                            "include": "#reg"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#reg"
+                    }]
                 },
                 "5": {
-                    "patterns": [
-                        {
-                            "include": "#comment"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#comment"
+                    }]
                 }
             }
         },
@@ -193,50 +153,41 @@
             "match": "^([^\\s]*)\\s+(\\.fill)\\s+([^\\s]+)(\\s+.*)?",
             "captures": {
                 "1": {
-                    "patterns": [
-                        {
-                            "include": "#label"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#label"
+                    }]
                 },
                 "2": {
-                    "patterns": [
-                        {
-                            "include": "#opcode"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#opcode"
+                    }]
                 },
                 "3": {
-                    "patterns": [
-                        {
-                            "include": "#offset"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#offset"
+                    }]
                 },
                 "4": {
-                    "patterns": [
-                        {
-                            "include": "#comment"
-                        }
-                    ]
+                    "patterns": [{
+                        "include": "#comment"
+                    }]
                 }
             }
         },
         "offset": {
             "name": "meta.offset.lc2k",
-            "patterns": [
-                {
-                    "include": "#label"
+            "patterns": [{
+                    "include": "#constant"
                 },
                 {
-                    "include": "#constant"
+                    "include": "#label"
                 }
+
             ]
         },
         "label": {
             "name": "meta.label.lc2k",
-            "patterns": [
-                {
+            "patterns": [{
                     "include": "#localLabel"
                 },
                 {
@@ -261,8 +212,7 @@
         },
         "reg": {
             "name": "meta.reg.lc2k",
-            "patterns": [
-                {
+            "patterns": [{
                     "include": "#regNum"
                 },
                 {

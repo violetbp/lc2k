@@ -1,7 +1,22 @@
 # Change Log
+
 All notable changes to the "weeeee" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 1.1
 
-## [Unreleased]
-- Initial release
+### 1.1.1
+
+* Fixed minor bug in syntax highlighting
+* Updated readme to be useful
+* Added changelog
+
+### 1.1.0
+
+* Added hover help on opcode
+* Much improved syntax highlighting
+
+## 1.0
+
+### 1.0.0
+
+* Added basic syntax highlighting

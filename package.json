@@ -2,7 +2,7 @@
   "name": "lc2k",
   "displayName": "Lc2k assembly support",
   "description": "Support for various features with eecs 370 lc2k language",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "violetbp",
   "icon": "images/lc2kIcon.png",
   "engines": {
@@ -21,13 +21,11 @@
     "Programming Languages"
   ],
   "activationEvents": [
-    "onLanguage:lc2k",
-    "onCommand:extension.sayHello"
+    "onLanguage:lc2k"
   ],
   "main": "./out/extension",
   "contributes": {
-    "languages": [
-      {
+    "languages": [{
         "id": "lc2k",
         "aliases": [
           "LC2K Assembly",
@@ -38,14 +36,19 @@
         ],
         "configuration": "./language-configuration.json"
       }
+
     ],
-    "grammars": [
-      {
-        "language": "lc2k",
-        "scopeName": "source.lc2k",
-        "path": "./syntaxes/lc2k.tmLanguage.json"
-      }
-    ],
+    "[lc2k]": {
+      "editor.insertSpaces": false,
+      "editor.tabSize": 8,
+      "editor.autoIndent": false,
+      "editor.formatOnSave": false
+    },
+    "grammars": [{
+      "language": "lc2k",
+      "scopeName": "source.lc2k",
+      "path": "./syntaxes/lc2k.tmLanguage.json"
+    }],
     "capabilities": {
       "definitionProvider": "true"
     }
