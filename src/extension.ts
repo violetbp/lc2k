@@ -4,7 +4,7 @@
 import * as vscode from 'vscode';
 import {Lc2kDefinitionProvider} from './lc2kDeclaration';
 import {Lc2kHoverProvider} from './lc2kDeclaration';
-
+import {Lc2kFormatter} from './lc2kFormat';
 
 const LC2K_MODE: vscode.DocumentFilter = {
   language: 'lc2k',
@@ -38,10 +38,12 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.window.showInformationMessage('Hello World!');
   });*/
   let hoverprovider = vscode.languages.registerHoverProvider(LC2K_MODE, new Lc2kHoverProvider());
+  let formatter = vscode.languages.registerDocumentFormattingEditProvider(LC2K_MODE, new Lc2kFormatter());
+  let defProvider = vscode.languages.registerDefinitionProvider(LC2K_MODE, new Lc2kDefinitionProvider());
 
-  // context.subscriptions.push(disposable1);
+  context.subscriptions.push(formatter);
   context.subscriptions.push(hoverprovider);
-  context.subscriptions.push(vscode.languages.registerDefinitionProvider(LC2K_MODE, new Lc2kDefinitionProvider()));
+  context.subscriptions.push(defProvider);
 }
 
 // this method is called when your extension is deactivated

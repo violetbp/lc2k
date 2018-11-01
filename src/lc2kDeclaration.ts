@@ -65,9 +65,9 @@ export class Lc2kDefinitionProvider implements vscode.DefinitionProvider {
     return new Promise<vscode.Location>((resolve, reject) => {
       let range = document.getWordRangeAtPosition(position);
       let symbol = document.getText(range);
-      console.log(symbol);
-      if (symbol === "add") {
-        console.log("ayay");
+      // console.log(symbol);
+      if (false) {  // symbol === "add") {
+        // console.log("ayay");
 
         let pos = new vscode.Position(position.line, 5);
 

@@ -18,7 +18,8 @@
   ],
   "categories": [
     "Other",
-    "Programming Languages"
+    "Programming Languages",
+    "Formatters"
   ],
   "activationEvents": [
     "onLanguage:lc2k"
@@ -36,14 +37,7 @@
       ],
       "configuration": "./language-configuration.json"
     }],
-    "configurationDefaults": {
-      "[lc2k]": {
-        "editor.insertSpaces": false,
-        "editor.tabSize": 8,
-        "editor.autoIndent": false,
-        "editor.formatOnSave": false
-      }
-    },
+
     "grammars": [{
       "language": "lc2k",
       "scopeName": "source.lc2k",
@@ -51,6 +45,40 @@
     }],
     "capabilities": {
       "definitionProvider": "true"
+    },
+    "configuration": {
+      "type": "object",
+      "title": "LC2K configuration",
+      "properties": {
+        "lc2k.format.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enables this extention to format .as files."
+        },
+        "lc2k.format.addNewlineAtEOF": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add a newline at the end of a file if there isn't one."
+        },
+        "lc2k.format.filloffset": {
+          "type": "integer",
+          "default": 3,
+          "description": "Offset for comments after a .fill, inline is 3."
+        },
+        "lc2k.format.jalroffset": {
+          "type": "integer",
+          "default": 2,
+          "description": "Offset for comments after a jalr, inline is 2."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[lc2k]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 8,
+        "editor.autoIndent": false,
+        "editor.formatOnSave": true
+      }
     }
   },
   "scripts": {
