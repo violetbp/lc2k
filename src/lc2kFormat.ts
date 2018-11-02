@@ -10,26 +10,13 @@ export class Lc2kFormatter implements vscode.DocumentRangeFormattingEditProvider
     if (!enable) {
       return [];
     }
-    const fillOffset = config.get('format.filloffset');
-    const jalrOffset = config.get('format.jalroffset');
+    const fillOffset = +config.get('format.filloffset');
+    const jalrOffset = +config.get('format.jalroffset');
     const addNewLine = config.get('format.addNewlineAtEOF');
 
-    const line = document.lineAt(1);
 
-
-
-    /*const lastLine1 = document.lineAt(document.lineCount - 1);
-    let test = [
-      // vscode.TextEdit.setEndOfLine(vscode.EndOfLine.LF),
-      vscode.TextEdit.insert(line.range.end, '\n'),
-      // vscode.TextEdit.insert(lastLine1.range.end, '\n'),
-      vscode.TextEdit.insert(lastLine1.range.end, '\n'),
-      vscode.TextEdit.insert(lastLine1.range.start, "HELLO")
-      vscode.TextEdit.
-    ];
-    return test;*/
     var edits = [];
-
+    var regex;
     for (let i = 0; i < document.lineCount; i++) {
       // console.log(i);
 
@@ -37,44 +24,56 @@ export class Lc2kFormatter implements vscode.DocumentRangeFormattingEditProvider
       let text = line.text;
 
 
-      var OpcodeRegex = /^(?:[^\\s]*)\\s+(noop|halt)/g;
-      // var OpcodeRegex = /^(?:[^\\s]*)\\s+(noop|halt)/g;
 
-      let matches = text.match(OpcodeRegex);
-      // console.log(text + ":");
+      var OpcodeRegex = /(?:[^\s]*\s+)(add|nor|nand|lw|sw|beq|jalr|noop|halt|\.fill)(?:.*)/g;
 
-      if (!matches || matches.length === 0) {
-        continue;
-      }
-
-      matches.forEach(element => { console.log("  " + element); });
+      let opcode = text.replace(OpcodeRegex, "$1");
+      console.log("opcode: " + opcode);
 
 
 
-      let opcode = matches[0];
-
-      if (opcode === "add") {
-      }
-
-
-
-      // var regex = /^(\w+)\s+(\w+)/g;
-      // console.log(text.search(regex));
-      // text.replace(regex, "$1\t$2");
-      var regex = /\s+/g;
+      // var regex = /\s+/g;
       // console.log(text.search(regex));
       // text = text.replace("halt", "a");
 
-      text = text.replace(regex, "\t");
+      // text = text.replace(regex, "\t");
+      var newText;
+      switch (opcode) {
+        case "add":
+        case "nor":
+        case "lw":
+        case "sw":
+        case "beq":
+          regex = /^([^\s]*)\s+(add|nor|nand|lw|sw|beq)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+(.*)?/g;
+          newText = text.replace(regex, "$1\t$2\t$3\t$4\t$5\t$6");
+          edits.push(vscode.TextEdit.replace(line.range, newText));
+          break;
+
+        case "jalr":
+          regex = /^([^\s]*)\s+(jalr)\s+([^\s]+)\s+([^\s]+)\s+(.*)?/g;
+          newText = text.replace(regex, "$1\t$2\t$3\t$4\t$5");
+          edits.push(vscode.TextEdit.replace(line.range, newText));
+          break;
+
+        case ".fill":
+          regex = /^([^\s]*)\s+(\.fill)\s+([^\s]+)\s+(.*)?/g;
+          newText = text.replace(regex, "$1\t$2\t$3\t" + "\t".repeat(fillOffset) + "$4");
+          edits.push(vscode.TextEdit.replace(line.range, newText));
+          break;
+
+        case "halt":
+        case "noop":
+          regex = /^([^\s]*)\s+(halt|noop)\s+(.*)?/g;
+          newText = text.replace(regex, "$1\t$2\t" + "\t".repeat(jalrOffset) + "$3");
+          edits.push(vscode.TextEdit.replace(line.range, newText));
+          break;
 
 
-      // text = "hello!";
+        default: { break; }
+      }
+
+
       edits.push(vscode.TextEdit.replace(line.range, text));
-
-      // if (line.text.match("add|nor|lw|sw|beq|jalr|halt|noop|.fill")[0] === ".fill") {
-      // add offset
-      // fillOffset
-      // }
     }
 
     // for (let i = 0; i < document.lineCount; i++) {
