@@ -17,7 +17,7 @@ const LC2K_MODE: vscode.DocumentFilter = {
 export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
-  console.log('Congratulations, your extension "weeeee" is now active!');
+  console.log('Congratulations, your extension lc2k is now active!');
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with  registerCommand

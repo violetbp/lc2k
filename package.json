@@ -2,7 +2,7 @@
   "name": "lc2k",
   "displayName": "Lc2k assembly support",
   "description": "Support for various features with eecs 370 lc2k language",
-  "version": "1.1.1",
+  "version": "0.2.0",
   "publisher": "violetbp",
   "icon": "images/lc2kIcon.png",
   "engines": {
@@ -62,12 +62,17 @@
         },
         "lc2k.format.filloffset": {
           "type": "integer",
-          "default": 3,
+          "default": 2,
           "description": "Offset for comments after a .fill, inline is 3."
         },
         "lc2k.format.jalroffset": {
           "type": "integer",
-          "default": 2,
+          "default": 1,
+          "description": "Offset for comments after a jalr, inline is 2."
+        },
+        "lc2k.format.noopoffset": {
+          "type": "integer",
+          "default": 3,
           "description": "Offset for comments after a jalr, inline is 2."
         }
       }

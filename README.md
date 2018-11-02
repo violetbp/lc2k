@@ -11,20 +11,33 @@
 ### Opcode hover help
 
 * Quick reference to what opcodes do on hover
-![Opcode Help](images/opcodeHelp.png)
+  ![Opcode Help](images/opcodeHelp.png)
+
+### Formatter
+
+* Has a few settings:
+  * format.enable
+    * Enable the formatter.
+  * format.addNewlineAtEOF
+    * When enabled, will add a newline at the end of the file so you don't get "line too long" errors.
+  * format.filloffset, format.jalroffset, format.noopoffset
+    * Changes the tab offset for comments in given opcodes.
+    * -1 will not indent or format the comments.
 
 ------------------------------------------------------
 
 ## Release Notes
 
-### 1.1.*
+### 0.2.*
+
+* Added formatter
+
+### 0.1.*
 
 * Hover help on opcode
 * Much imporoved syntax highlighting
 * Updated readme
 
-### 1.0.0
+### 0.0.*
 
 * Basic features working, simple regex higlighting
-
-
