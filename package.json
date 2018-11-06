@@ -60,20 +60,20 @@
           "default": true,
           "description": "Add a newline at the end of a file if there isn't one."
         },
-        "lc2k.format.filloffset": {
-          "type": "integer",
-          "default": 2,
-          "description": "Offset for comments after a .fill, inline is 3."
-        },
         "lc2k.format.jalroffset": {
-          "type": "integer",
+          "type": ["integer", "null"],
           "default": 1,
-          "description": "Offset for comments after a jalr, inline is 2."
+          "description": "Offset for comments after a jalr, default is 1.  \nA value of null won't change spacing for the comment."
+        },
+        "lc2k.format.filloffset": {
+          "type": ["integer", "null"],
+          "default": 2,
+          "description": "Offset for comments after a .fill, default is 2.  \nA value of null won't change spacing for the comment."
         },
         "lc2k.format.noopoffset": {
-          "type": "integer",
+          "type": ["integer", "null"],
           "default": 3,
-          "description": "Offset for comments after a jalr, inline is 2."
+          "description": "Offset for comments after a noop or halt, default is 3.  \nA value of null won't change spacing for the comment."
         }
       }
     },
@@ -82,7 +82,9 @@
         "editor.insertSpaces": false,
         "editor.tabSize": 8,
         "editor.autoIndent": false,
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "files.trimFinalNewlines": true,
+        "files.insertFinalNewline": true
       }
     }
   },
