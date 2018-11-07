@@ -55,11 +55,6 @@
           "default": true,
           "description": "Enables this extention to format .as files."
         },
-        "lc2k.format.addNewlineAtEOF": {
-          "type": "boolean",
-          "default": true,
-          "description": "Add a newline at the end of a file if there isn't one."
-        },
         "lc2k.format.jalroffset": {
           "type": ["integer", "null"],
           "default": 1,

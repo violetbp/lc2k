@@ -18,8 +18,8 @@
 * Has a few settings:
   * format.enable
     * Enable the formatter.
-  * format.addNewlineAtEOF
-    * When enabled, will add a newline at the end of the file so you don't get "line too long" errors.
+  * "[lc2k]": { "files.trimFinalNewlines": true,  "files.insertFinalNewline": true}
+    * When enabled(default), will add a newline at the end of the file so you don't get "line too long" errors.
   * format.filloffset, format.jalroffset, format.noopoffset
     * Changes the tab offset for comments in given opcodes.
     * -1 will not indent or format the comments.
