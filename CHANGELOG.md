@@ -9,9 +9,8 @@ All notable changes will be documented in this file.
 * Fixed formatter
   * Options to set offset for different opcodes works
   * null option in offset will disable it
-  * Option (default on) to put one newline at the end of the file changed to builtin 
+  * Option (default on) to put one newline at the end of the file changed to builtin
 * Cleaned up extension.ts
-* 
 
 ### 0.2.0
 

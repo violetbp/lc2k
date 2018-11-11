@@ -37,7 +37,7 @@ export class Lc2kFormatter implements vscode.DocumentRangeFormattingEditProvider
 
       let opcode = text.replace(OpcodeRegex, "$1");
       // console.log("opcode: " + opcode);
-
+      // TODO add option to indent automatically on detecting opcode (with number after) at beginning of line
       switch (opcode) {
         case "add":
         case "nor":
