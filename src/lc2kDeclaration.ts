@@ -78,10 +78,5 @@ export class Lc2kDefinitionProvider implements vscode.DefinitionProvider {
       }
 
     });
-
-
-    // let definitionResource = vscode.Uri.file(document.fileName);
-
-    // return new vscode.Location(definitionResource, pos);
   }
 }
