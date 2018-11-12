@@ -17,12 +17,14 @@ export class Lc2kFormatter implements vscode.DocumentRangeFormattingEditProvider
     if (!enable) {
       return [];
     }
-    const fillOffset = +config.get('format.filloffset');
-    const jalrOffset = +config.get('format.jalroffset');
-    const noopOffset = +config.get('format.noopoffset');
-    const addNewLine = config.get('format.addNewlineAtEOF');
-    // console.log("jalr offset: " + jalrOffset);
-    // console.log("jalr offset: " + fillOffset);
+
+    const fillOffset = config.get('format.fillOffset');
+    const jTypeOffset = config.get('format.jTypeOffset');
+    const oTypeOffset = config.get('format.oTypeOffset');
+    const irTypeOffset = config.get('format.irTypeOffset');
+    // const addNewLine = config.get('format.addNewlineAtEOF');
+
+    // console.log({irTypeOffset, oTypeOffset, jTypeOffset, fillOffset});
 
     let edits = [];
 
@@ -43,14 +45,15 @@ export class Lc2kFormatter implements vscode.DocumentRangeFormattingEditProvider
         case "sw":
         case "beq": {
           let regex = /^([^\s]*)\s+(add|nor|nand|lw|sw|beq)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)(\s+)?(.*)?/g;
-          let newText = text.replace(regex, "$1\t$2\t$3\t$4\t$5\t$7").trimRight();  // TODO add option to not format or change formatting of these
+          let offset = (irTypeOffset !== null ? "\t".repeat(+irTypeOffset + 1) : "$6");
+          let newText = text.replace(regex, "$1\t$2\t$3\t$4\t$5" + offset + "$7").trimRight();
           edits.push(vscode.TextEdit.replace(line.range, newText));
           break;
         }
 
         case "jalr": {
           let regex = /^([^\s]*)\s+(jalr)\s+([^\s]+)\s+([^\s]+)(\s+)?(.*)?/g;
-          let offset = (jalrOffset ? "\t".repeat(jalrOffset + 1) : "$5");
+          let offset = (jTypeOffset !== null ? "\t".repeat(+jTypeOffset + 1) : "$5");
           let newText = text.replace(regex, "$1\t$2\t$3\t$4" + offset + "$6").trimRight();
           edits.push(vscode.TextEdit.replace(line.range, newText));
           break;
@@ -58,7 +61,7 @@ export class Lc2kFormatter implements vscode.DocumentRangeFormattingEditProvider
 
         case ".fill": {
           let regex = /^([^\s]*)\s+(\.fill)\s+([^\s]+)(\s+)?(.*)?/g;
-          let offset = (fillOffset ? "\t".repeat(fillOffset + 1) : "$4");
+          let offset = (fillOffset !== null ? "\t".repeat(+fillOffset + 1) : "$4");
           let newText = text.replace(regex, "$1\t$2\t$3" + offset + "$5").trimRight();
           edits.push(vscode.TextEdit.replace(line.range, newText));
           break;
@@ -67,7 +70,7 @@ export class Lc2kFormatter implements vscode.DocumentRangeFormattingEditProvider
         case "halt":
         case "noop": {
           let regex = /^([^\s]*)\s+(halt|noop)(\s+)?(.*)?/g;
-          let offset = (noopOffset ? "\t".repeat(noopOffset + 1) : "$3");
+          let offset = (oTypeOffset !== null ? "\t".repeat(+oTypeOffset + 1) : "$3");
           let newText = text.replace(regex, "$1\t$2" + offset + "$4").trimRight();
           edits.push(vscode.TextEdit.replace(line.range, newText));
           break;

@@ -6,11 +6,13 @@
 
 * Easier to read
 * Detects simple errors
+  
   ![Syntax highlighting](images/highlight.png)
 
 ### Opcode hover help
 
 * Quick reference to what opcodes do on hover
+  
   ![Opcode Help](images/opcodeHelp.png)
 
 ### Formatter
@@ -34,8 +36,8 @@
   * "[lc2k]": { .... "files.trimFinalNewlines": true,  "files.insertFinalNewline": true}
     * When enabled(default), will add a newline at the end of the file so you don't get "line too long" errors.
     * You can disable either of these, but that's not reccomended.
-  * format.filloffset, format.jalroffset, format.noopoffset
-    * Changes the tab offset for comments for given opcodes.
+  * format.ioTypeOffset, format.jTypeOffset, format.oTypeOffset, format.fillOffset
+    * Changes the tab offset for comments for given types.
     * null will not indent or format the comments.
 
 ------------------------------------------------------

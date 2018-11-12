@@ -55,20 +55,26 @@
           "default": true,
           "description": "Enables this extention to format .as files."
         },
-        "lc2k.format.jalroffset": {
+        "lc2k.format.irTypeOffset": {
+          "type": ["integer", "null"],
+          "default": 0,
+          "description": "Offset for comments after a add/nor/sw/lw/beq, default is 0.  \nA value of null won't change spacing for the comment."
+        },
+        "lc2k.format.jTypeOffset": {
           "type": ["integer", "null"],
           "default": 1,
           "description": "Offset for comments after a jalr, default is 1.  \nA value of null won't change spacing for the comment."
         },
-        "lc2k.format.filloffset": {
-          "type": ["integer", "null"],
-          "default": 2,
-          "description": "Offset for comments after a .fill, default is 2.  \nA value of null won't change spacing for the comment."
-        },
-        "lc2k.format.noopoffset": {
+
+        "lc2k.format.oTypeOffset": {
           "type": ["integer", "null"],
           "default": 3,
           "description": "Offset for comments after a noop or halt, default is 3.  \nA value of null won't change spacing for the comment."
+        },
+        "lc2k.format.fillOffset": {
+          "type": ["integer", "null"],
+          "default": 2,
+          "description": "Offset for comments after a .fill, default is 2.  \nA value of null won't change spacing for the comment."
         }
       }
     },
