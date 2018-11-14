@@ -36,7 +36,7 @@
   * "[lc2k]": { .... "files.trimFinalNewlines": true,  "files.insertFinalNewline": true}
     * When enabled(default), will add a newline at the end of the file so you don't get "line too long" errors.
     * You can disable either of these, but that's not reccomended.
-  * format.ioTypeOffset, format.jTypeOffset, format.oTypeOffset, format.fillOffset
+  * format.irTypeOffset, format.jTypeOffset, format.oTypeOffset, format.fillOffset
     * Changes the tab offset for comments for given types.
     * null will not indent or format the comments.
 

@@ -58,7 +58,7 @@
         "lc2k.format.irTypeOffset": {
           "type": ["integer", "null"],
           "default": 0,
-          "description": "Offset for comments after a add/nor/sw/lw/beq, default is 0.  \nA value of null won't change spacing for the comment."
+          "description": "Offset for comments after an add/nor/sw/lw/beq, default is 0.  \nA value of null won't change spacing for the comment."
         },
         "lc2k.format.jTypeOffset": {
           "type": ["integer", "null"],
