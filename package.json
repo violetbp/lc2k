@@ -2,7 +2,7 @@
   "name": "lc2k",
   "displayName": "Lc2k assembly support",
   "description": "Support for various features with eecs 370 lc2k language",
-  "version": "1.1.1",
+  "version": "0.2.0",
   "publisher": "violetbp",
   "icon": "images/lc2kIcon.png",
   "engines": {
@@ -18,7 +18,8 @@
   ],
   "categories": [
     "Other",
-    "Programming Languages"
+    "Programming Languages",
+    "Formatters"
   ],
   "activationEvents": [
     "onLanguage:lc2k"
@@ -36,14 +37,7 @@
       ],
       "configuration": "./language-configuration.json"
     }],
-    "configurationDefaults": {
-      "[lc2k]": {
-        "editor.insertSpaces": false,
-        "editor.tabSize": 8,
-        "editor.autoIndent": false,
-        "editor.formatOnSave": false
-      }
-    },
+
     "grammars": [{
       "language": "lc2k",
       "scopeName": "source.lc2k",
@@ -51,6 +45,48 @@
     }],
     "capabilities": {
       "definitionProvider": "true"
+    },
+    "configuration": {
+      "type": "object",
+      "title": "LC2K configuration",
+      "properties": {
+        "lc2k.format.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enables this extention to format .as files."
+        },
+        "lc2k.format.irTypeOffset": {
+          "type": ["integer", "null"],
+          "default": 0,
+          "description": "Offset for comments after an add/nor/sw/lw/beq, default is 0.  \nA value of null won't change spacing for the comment."
+        },
+        "lc2k.format.jTypeOffset": {
+          "type": ["integer", "null"],
+          "default": 1,
+          "description": "Offset for comments after a jalr, default is 1.  \nA value of null won't change spacing for the comment."
+        },
+
+        "lc2k.format.oTypeOffset": {
+          "type": ["integer", "null"],
+          "default": 3,
+          "description": "Offset for comments after a noop or halt, default is 3.  \nA value of null won't change spacing for the comment."
+        },
+        "lc2k.format.fillOffset": {
+          "type": ["integer", "null"],
+          "default": 2,
+          "description": "Offset for comments after a .fill, default is 2.  \nA value of null won't change spacing for the comment."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[lc2k]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 8,
+        "editor.autoIndent": false,
+        "editor.formatOnSave": true,
+        "files.trimFinalNewlines": true,
+        "files.insertFinalNewline": true
+      }
     }
   },
   "scripts": {

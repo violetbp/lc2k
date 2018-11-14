@@ -4,7 +4,7 @@
 import * as vscode from 'vscode';
 import {Lc2kDefinitionProvider} from './lc2kDeclaration';
 import {Lc2kHoverProvider} from './lc2kDeclaration';
-
+import {Lc2kFormatter} from './lc2kFormat';
 
 const LC2K_MODE: vscode.DocumentFilter = {
   language: 'lc2k',
@@ -17,31 +17,19 @@ const LC2K_MODE: vscode.DocumentFilter = {
 export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
-  console.log('Congratulations, your extension "weeeee" is now active!');
+  // console.log('Congratulations, your extension lc2k is now active!');
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with  registerCommand
-  // The commandId parameter must match the command field in package.json
-  /*context.subscriptions.push(
-      vscode.commands.registerCommand('extension.sayHello', () => {
-      // The code you place here will be executed every time your command is executed
-
-      // Display a message box to the user
-      vscode.window.showInformationMessage('Hello World!');
-  })
-  );*/
-
-  /*let disposable1 = vscode.commands.registerCommand('extension.sayHello', () => {
-      // The code you place here will be executed every time your command is executed
-
-      // Display a message box to the user
-      vscode.window.showInformationMessage('Hello World!');
-  });*/
+  // set variables for providers
   let hoverprovider = vscode.languages.registerHoverProvider(LC2K_MODE, new Lc2kHoverProvider());
+  let formatter = vscode.languages.registerDocumentFormattingEditProvider(LC2K_MODE, new Lc2kFormatter());
+  let formatter2 = vscode.languages.registerDocumentRangeFormattingEditProvider(LC2K_MODE, new Lc2kFormatter());
+  let defProvider = vscode.languages.registerDefinitionProvider(LC2K_MODE, new Lc2kDefinitionProvider());
 
-  // context.subscriptions.push(disposable1);
+  // register them
+  context.subscriptions.push(formatter);
+  context.subscriptions.push(formatter2);
   context.subscriptions.push(hoverprovider);
-  context.subscriptions.push(vscode.languages.registerDefinitionProvider(LC2K_MODE, new Lc2kDefinitionProvider()));
+  context.subscriptions.push(defProvider);
 }
 
 // this method is called when your extension is deactivated
