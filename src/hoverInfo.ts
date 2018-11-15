@@ -6,8 +6,8 @@ export class Lc2kHoverProvider implements vscode.HoverProvider {
         token: vscode.CancellationToken): vscode.ProviderResult<vscode.Hover> {
         let range = document.getWordRangeAtPosition(position);
         let symbol = document.getText(range);
-        if (symbol === ".fill") {
-            return new vscode.Hover("`.fill` isnt an opcode. It just puts whatever's to the right into the machine code.");
+        if (symbol === "fill") {
+            return new vscode.Hover(".fill isnt an opcode. It just puts whatever's to the right into the machine code.");
         } else if (OPCODES.hasOwnProperty(symbol)) {
             return new vscode.Hover(hoverString(OPCODES[symbol]));
         }

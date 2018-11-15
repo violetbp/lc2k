@@ -8,7 +8,7 @@ export interface Lc2kOpcode {
 }
 
 export function hoverString(op: Lc2kOpcode): MarkdownString {
-    return new MarkdownString(`\`${op.name}\`: opcode \`${op.opcode}\`\n\n`)
+    return new MarkdownString(`${op.name}: opcode ${op.opcode}\n\n`)
         .appendMarkdown(op.spec.value)
         .appendMarkdown(op.type.value);
 }
