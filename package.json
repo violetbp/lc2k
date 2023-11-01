@@ -33,7 +33,8 @@
         "lc2k"
       ],
       "extensions": [
-        ".as"
+        ".as",
+        ".nohaz"
       ],
       "configuration": "./language-configuration.json"
     }],
