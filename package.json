@@ -2,7 +2,7 @@
   "name": "lc2k",
   "displayName": "Lc2k assembly support",
   "description": "Support for various features with eecs 370 lc2k language",
-  "version": "1.1.1",
+  "version": "1.1.3",
   "publisher": "violetbp",
   "icon": "images/lc2kIcon.png",
   "engines": {
@@ -26,24 +26,27 @@
   ],
   "main": "./out/extension",
   "contributes": {
-    "languages": [{
-      "id": "lc2k",
-      "aliases": [
-        "LC2K Assembly",
-        "lc2k"
-      ],
-      "extensions": [
-        ".as",
-        ".nohaz"
-      ],
-      "configuration": "./language-configuration.json"
-    }],
-
-    "grammars": [{
-      "language": "lc2k",
-      "scopeName": "source.lc2k",
-      "path": "./syntaxes/lc2k.tmLanguage.json"
-    }],
+    "languages": [
+      {
+        "id": "lc2k",
+        "aliases": [
+          "LC2K Assembly",
+          "lc2k"
+        ],
+        "extensions": [
+          ".as",
+          ".nohaz"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "lc2k",
+        "scopeName": "source.lc2k",
+        "path": "./syntaxes/lc2k.tmLanguage.json"
+      }
+    ],
     "capabilities": {
       "definitionProvider": "true"
     },
@@ -54,26 +57,37 @@
         "lc2k.format.enable": {
           "type": "boolean",
           "default": true,
-          "description": "Enables this extention to format .as files."
+          "description": "Enables this extention to format lc2k files."
         },
         "lc2k.format.irTypeOffset": {
-          "type": ["integer", "null"],
+          "type": [
+            "integer",
+            "null"
+          ],
           "default": 0,
           "description": "Offset for comments after an add/nor/sw/lw/beq, default is 0.  \nA value of null won't change spacing for the comment."
         },
         "lc2k.format.jTypeOffset": {
-          "type": ["integer", "null"],
+          "type": [
+            "integer",
+            "null"
+          ],
           "default": 1,
           "description": "Offset for comments after a jalr, default is 1.  \nA value of null won't change spacing for the comment."
         },
-
         "lc2k.format.oTypeOffset": {
-          "type": ["integer", "null"],
+          "type": [
+            "integer",
+            "null"
+          ],
           "default": 3,
           "description": "Offset for comments after a noop or halt, default is 3.  \nA value of null won't change spacing for the comment."
         },
         "lc2k.format.fillOffset": {
-          "type": ["integer", "null"],
+          "type": [
+            "integer",
+            "null"
+          ],
           "default": 2,
           "description": "Offset for comments after a .fill, default is 2.  \nA value of null won't change spacing for the comment."
         }
@@ -98,10 +112,11 @@
     "test": "npm run compile && node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
-    "typescript": "^2.6.1",
-    "vscode": "^1.1.21",
-    "tslint": "^5.8.0",
-    "@types/node": "^8.10.25",
-    "@types/mocha": "^2.2.42"
+    "@types/mocha": "^10.0.3",
+    "@types/node": "^20.8.10",
+    "typescript": "^5.2.2",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
   }
 }

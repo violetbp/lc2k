@@ -44,7 +44,12 @@
 
 ## Release Notes
 
-### 0.2.*
+### 0.2.2
+
+* Added new file extension
+* Updated dependencies
+
+### 0.2.1
 
 * Added formatter
 
@@ -57,3 +62,34 @@
 ### 0.0.*
 
 * Basic features working, simple regex higlighting
+
+
+
+
+
+## Building for Dev - basic notes
+
+On nixos, sorry! but you should be able to just install node in some other way and everything else will be the same
+
+```bash
+nix-shell -p nodejs_20
+```
+
+fix any dependances etc
+In the shell
+
+```bash
+git clone git@github.com:violetbp/lc2k.git
+cd lc2k
+npm install 
+code . 
+```
+
+f5 to run and test
+
+#### Publishing
+
+`npm install @vscode/vsce`
+Delete the line added to dependances in package.json (should be empty)
+`vsce package`
+`vsce publish`
